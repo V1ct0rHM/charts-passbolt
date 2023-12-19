@@ -9,23 +9,39 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+      id: install-helm
+      with:
+         version: ${{ inputs.helm-version }}
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.1.0
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Add and update repos
+      run: |
+        helm repo add bitnami https://charts.bitnami.com/bitnami
+        helm repo add passbolt-library https://download.passbolt.com/charts/passbolt-library
+        helm repo update
+      shell: bash
 
-      - uses: actions/checkout@v3
-      - name: Publish Helm charts
-        uses: stefanprodan/helm-gh-pages@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build chart dependencies
+      run: helm dependency build
+      shell: bash
+
+    - name: Configure Git
+      run: |
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+    - name: Run chart-releaser
+      uses: helm/chart-releaser-action@v1.1.0
+      env:
+        CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Publish Helm charts
+      uses: stefanprodan/helm-gh-pages@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
