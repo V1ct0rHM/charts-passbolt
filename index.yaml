@@ -3,7 +3,7 @@ entries:
   passbolt:
   - apiVersion: v2
     appVersion: 4.4.0-1-ce
-    created: "2023-12-19T23:39:09.968654842Z"
+    created: "2023-12-19T23:39:24.901931461Z"
     dependencies:
     - name: passbolt-library
       repository: https://download.passbolt.com/charts/passbolt-library
@@ -21,12 +21,12 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 13.2.3
     description: Helm chart for passbolt PRO and CE
-    digest: 24ad3c6ef29029eb7fd4489df2ff0ae984e8c326683d8ba6328a60c8dc904da6
+    digest: 77bbc43dca3295e1d73316a4e7d12da4f83fe2346ef73dcb7d8da0ac7442f0db
     icon: https://github.com/icon
     name: passbolt
     type: application
     urls:
-    - https://github.com/V1ct0rHM/charts-passbolt/releases/download/passbolt-0.7.6/passbolt-0.7.6.tgz
+    - https://V1ct0rHM.github.io/charts-passbolt/passbolt-0.7.6.tgz
     version: 0.7.6
   - apiVersion: v2
     appVersion: 4.4.0-1-ce
@@ -55,4 +55,4 @@ entries:
     urls:
     - https://V1ct0rHM.github.io/charts-passbolt/passbolt-0.7.5.tgz
     version: 0.7.5
-generated: "2023-12-19T23:27:45.665118109Z"
+generated: "2023-12-19T23:39:24.888337795Z"
