@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/setup_helm
 
       - name: Run linter
-        run: helm lint
+        run: helm lint charts/passbolt
 
   unit-test:
     name: Unit Tests
@@ -33,7 +33,7 @@ jobs:
         run: helm plugin install https://github.com/helm-unittest/helm-unittest.git
 
       - name: Run unit tests
-        run: helm unittest --color .
+        run: helm unittest --color charts/passbolt
 
   release:
     runs-on: ubuntu-latest
@@ -61,5 +61,3 @@ jobs:
       uses: stefanprodan/helm-gh-pages@master
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        charts_dir: ./
-        target_dir: ./
