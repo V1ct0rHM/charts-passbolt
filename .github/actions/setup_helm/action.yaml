@@ -14,7 +14,7 @@ runs:
       uses: azure/setup-helm@v3
       id: install-helm
       with:
-         version: ${{ inputs.helm-version }}
+         version: 3.12.0
 
     - name: Add and update repos
       run: |
@@ -24,5 +24,5 @@ runs:
       shell: bash
 
     - name: Build chart dependencies
-      run: helm dependency build
+      run: helm dependency build charts/passbolt
       shell: bash
