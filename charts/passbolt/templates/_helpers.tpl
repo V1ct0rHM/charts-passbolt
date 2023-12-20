@@ -50,16 +50,6 @@ app.kubernetes.io/name: {{ include "passbolt.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-
-{{/*
-Type labels
-*/}}
-{{- define "passbolt.typelabels" -}}
-type: {{ .type }}
-action: {{ .action }}
-{{- end }}
-
-
 {{/*
 Create the name of the service account to use
 */}}
