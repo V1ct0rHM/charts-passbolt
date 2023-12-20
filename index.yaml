@@ -3,6 +3,33 @@ entries:
   passbolt:
   - apiVersion: v2
     appVersion: 4.4.0-1-ce
+    created: "2023-12-20T12:47:34.29050041Z"
+    dependencies:
+    - name: passbolt-library
+      repository: https://download.passbolt.com/charts/passbolt-library
+      version: 0.2.7
+    - condition: redisDependencyEnabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.15.2
+    - condition: mariadbDependencyEnabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.5.7
+    - condition: postgresqlDependencyEnabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.3
+    description: Helm chart for passbolt PRO and CE
+    digest: 13e8a57f16b98e0d2866ab5ba87766cd98acd6a62381e714d9d4a25cc4c4288c
+    icon: https://github.com/icon
+    name: passbolt
+    type: application
+    urls:
+    - https://github.com/V1ct0rHM/charts-passbolt/releases/download/passbolt-0.7.7/passbolt-0.7.7.tgz
+    version: 0.7.7
+  - apiVersion: v2
+    appVersion: 4.4.0-1-ce
     created: "2023-12-19T23:39:24.901931461Z"
     dependencies:
     - name: passbolt-library
