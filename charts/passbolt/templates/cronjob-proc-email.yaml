@@ -24,13 +24,12 @@ spec:
             {{- end }}
         spec:
           nodeSelector:
-            {{- with .Values.nodeSelector }}
-            {{ toYaml . | nindent 10 }}
-            {{- end }}
+            platform: "x64"
           tolerations:
-            {{- with .Values.tolerations }}
-            {{ toYaml . | nindent 10 }}
-            {{- end }}
+            - key: "usage"
+              operator: "Equal"
+              value: "backend"
+              effect: "PreferNoSchedule"
           {{- include "passbolt.pullSecrets" ( dict "images" (list .Values.imagePullSecrets ) "global" .Values.global) | nindent 10 }}
           serviceAccountName: {{ $Name }}-sa-common
           restartPolicy: OnFailure
