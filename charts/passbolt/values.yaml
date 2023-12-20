@@ -127,7 +127,7 @@ app:
     tag: 4.4.0-1-ce
   # Allowed options: mariadb, mysql or postgresql
   database:
-    kind: postgresql
+    kind: mariadb
   cache:
     # Use CACHE_CAKE_DEFAULT_* variables to configure the connection to redis instance
     # on the passboltEnv configuration section
