@@ -22,7 +22,7 @@ tests:
           name: test-passbolt-hpa-srv
       - equal:
           path: spec.scaleTargetRef.name
-          value: test-passbolt-depl-srv
+          value: test-passbolt
 
   - it: should set max an min boundaries
     templates:
