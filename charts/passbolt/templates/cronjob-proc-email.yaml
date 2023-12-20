@@ -18,19 +18,19 @@ spec:
       template:
         metadata:
           labels:
-           {{- include "passbolt-library.typelabels" (dict "action" $action "type" $type) | nindent 12 }}
-           {{- with .Values.cronJobEmail.extraPodLabels }}
-             {{- toYaml . | nindent 12 }}
-           {{- end }}
+            {{- include "passbolt-library.typelabels" (dict "action" $action "type" $type) | nindent 12 }}
+            {{- with .Values.cronJobEmail.extraPodLabels }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
         spec:
-          {{- with .Values.nodeSelector }}
           nodeSelector:
-            {{- toYaml . | nindent 8 }}
-          {{- end }}
-          {{- with .Values.tolerations }}
+            {{- with .Values.nodeSelector }}
+            {{ toYaml . | nindent 10 }}
+            {{- end }}
           tolerations:
-            {{- toYaml . | nindent 8 }}
-          {{- end }}
+            {{- with .Values.tolerations }}
+            {{ toYaml . | nindent 10 }}
+            {{- end }}
           {{- include "passbolt.pullSecrets" ( dict "images" (list .Values.imagePullSecrets ) "global" .Values.global) | nindent 10 }}
           serviceAccountName: {{ $Name }}-sa-common
           restartPolicy: OnFailure
